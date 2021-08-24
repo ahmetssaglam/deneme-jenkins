@@ -38,9 +38,9 @@ pipeline {
 						  sh 'git log -1'
 						  //sh 'git reset --hard dev@{1.minutes.ago}'
 						  //sh 'git reset --hard HEAD~1'
-						  withCredentials([usernamePassword(credentialsId: 'c93dd6e5-ea3a-44b4-a4d7-cbeb95f269fd', passwordVariable: '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', usernameVariable: 'ahmetssaglam')]) {
-                        				sh('git push https://ahmetssaglam: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@github.com/ahmetssaglam/deneme-jenkins.git')
-                   				 }
+						  //withCredentials([usernamePassword(credentialsId: 'c93dd6e5-ea3a-44b4-a4d7-cbeb95f269fd', passwordVariable: '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', usernameVariable: 'ahmetssaglam')]) {
+                        			  //	sh('git push https://ahmetssaglam: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@github.com/ahmetssaglam/deneme-jenkins.git')
+                   				  //}
 						  // sh 'git push -f origin dev'
 						  echo 'Test Failed ! Changes Reverted !'
 		    			}
