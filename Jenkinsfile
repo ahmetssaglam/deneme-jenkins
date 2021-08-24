@@ -4,7 +4,7 @@ pipeline {
 	stages {
 		stage('build') {
         		steps {
-	  			      //sh 'cd'
+	  			 //sh 'cd'
           			//sh 'cd GitHub-Projects/deneme-jenkins/'
 				       echo 'Build'
         		}
@@ -30,11 +30,12 @@ pipeline {
               					//  branch: 'dev'
 				
 				
-                  sh 'git checkout dev'
-                  //sh 'git reset --hard dev@{1.minutes.ago}'
-                  // sh 'git reset --hard HEAD~1'
-                  //sh 'git push -f origin dev'
-                  echo 'Test Failed ! Changes Reverted !'
+						  sh 'git checkout dev'
+						  sh 'git pull'
+						  //sh 'git reset --hard dev@{1.minutes.ago}'
+						  // sh 'git reset --hard HEAD~1'
+						  //sh 'git push -f origin dev'
+						  echo 'Test Failed ! Changes Reverted !'
 		    			}
 				}
 		    		echo 'Test Completed !'
