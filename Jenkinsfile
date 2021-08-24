@@ -11,8 +11,8 @@ pipeline {
       		}
 	    	stage('preparation-test') {
 	      		steps {
-		      		//sh 'source ../../VirEnvs/testing-env/bin/activate'
-		      		echo 'Virtual Env Activated'
+		      		sh 'pip3 install pytest'
+		      		echo 'Pytest Installed'
 	     		}
 	    	}
 	    	stage('test') {
@@ -30,7 +30,7 @@ pipeline {
               					//  branch: 'dev'
 				
 				
-						sh 'git checkout dev'
+						sh 'git checkout master'
 						//sh 'git reset --hard dev@{1.minutes.ago}'
 						// sh 'git reset --hard HEAD~1'
 						//sh 'git push -f origin dev'
