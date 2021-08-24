@@ -7,8 +7,8 @@ pipeline {
 	  			 //sh 'cd'
           			//sh 'cd GitHub-Projects/deneme-jenkins/'
 				echo 'Build'
-				git config --global user.email "ahmetssaglam@gmail.com"
-				git config --global user.name "ahmetssaglam"
+				sh 'git config --global user.email "ahmetssaglam@gmail.com"'
+				sh 'git config --global user.name "ahmetssaglam"'
         		}
       		}
 	    	stage('preparation-test') {
@@ -36,7 +36,7 @@ pipeline {
 						  sh 'git pull'
 						  sh 'git log -1'
 						  //sh 'git reset --hard dev@{1.minutes.ago}'
-						  sh 'git reset --hard HEAD~1'
+						  //sh 'git reset --hard HEAD~1'
 						  sh 'git push -f origin dev'
 						  echo 'Test Failed ! Changes Reverted !'
 		    			}
