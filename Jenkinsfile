@@ -4,20 +4,19 @@ pipeline {
 	stages {
 		stage('build') {
         		steps {
-	  			sh 'cd'
-          			sh 'cd GitHub-Projects/deneme-jenkins/'
+	  			//sh 'cd'
+          			//sh 'cd GitHub-Projects/deneme-jenkins/'
+				echo 'Build'
         		}
       		}
 	    	stage('preparation-test') {
 	      		steps {
-		      		sh 'source ../../VirEnvs/testing-env/bin/activate'
+		      		//sh 'source ../../VirEnvs/testing-env/bin/activate'
 		      		echo 'Virtual Env Activated'
 	     		}
 	    	}
 	    	stage('test') {
-	      		steps {
-		      		echo 'Waiting for DB !!'
-		       		// sh 'sleep 30'	
+	      		steps {	
 		      		script {
 			      		try {
 			      			sh 'python3 -m pytest tests'
