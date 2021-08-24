@@ -34,8 +34,8 @@ pipeline {
 						  sh 'git pull'
 						  sh 'git log -1'
 						  //sh 'git reset --hard dev@{1.minutes.ago}'
-						  // sh 'git reset --hard HEAD~1'
-						  //sh 'git push -f origin dev'
+						  sh 'git reset --hard HEAD~1'
+						  sh 'git push -f origin dev'
 						  echo 'Test Failed ! Changes Reverted !'
 		    			}
 				}
