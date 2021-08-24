@@ -6,7 +6,9 @@ pipeline {
         		steps {
 	  			 //sh 'cd'
           			//sh 'cd GitHub-Projects/deneme-jenkins/'
-				       echo 'Build'
+				echo 'Build'
+				git config --global user.email "ahmetssaglam@gmail.com"
+				git config --global user.name "ahmetssaglam"
         		}
       		}
 	    	stage('preparation-test') {
