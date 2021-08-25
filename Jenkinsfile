@@ -1,3 +1,4 @@
+def res = "success"
 pipeline {
 	agent any
   
@@ -7,8 +8,9 @@ pipeline {
 	  			 //sh 'cd'
           			//sh 'cd GitHub-Projects/deneme-jenkins/'
 				echo 'Build'
-				sh 'git config --global user.email "ahmetssaglam@gmail.com"'
-				sh 'git config --global user.name "ahmetssaglam"'
+				sh 'python3 /plus/plus.py'
+				//sh 'git config --global user.email "ahmetssaglam@gmail.com"'
+				//sh 'git config --global user.name "ahmetssaglam"'
         		}
       		}
 	    	stage('preparation-test') {
@@ -25,25 +27,28 @@ pipeline {
 			      			echo 'Test Passed !'
 		      			}
 		      			catch (err) {
-				
-				      		echo 'cmt'
 						
-            					//git url: "git@github.com:ahmetssaglam/flask-docker-tdd.git",
-               					// credentialsId: 'bdefd814-cf0d-4e6d-8a6a-08b00bd71ab1',
-              					//  branch: 'dev'
-				
-				
+						  res = "fail"
+				      		  echo 'cmt'
 						  sh 'git checkout dev'
 						  sh 'git pull'
 						  sh 'git log -1'
 						  //sh 'git reset --hard dev@{1.minutes.ago}'
-						  //sh 'git reset --hard HEAD~1'
-						  //withCredentials([usernamePassword(credentialsId: 'c93dd6e5-ea3a-44b4-a4d7-cbeb95f269fd', passwordVariable: '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', usernameVariable: 'ahmetssaglam')]) {
-                        			  //	sh('git push https://ahmetssaglam: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@github.com/ahmetssaglam/deneme-jenkins.git')
-                   				  //}
-						  // sh 'git push -f origin dev'
+						  sh 'git reset --soft HEAD~1'
 						  echo 'Test Failed ! Changes Reverted !'
 		    			}
+					
+					finally {
+						if (res == "fail") {
+						    withCredentials([gitUsernamePassword(credentialsId: 'b1916737-98ac-4bd5-a2fe-3c4725e5f71a', gitToolName: 'git-tool')]) {
+							sh 'git push -f origin dev'
+						    }
+						} 
+						else {
+			    				echo 'Executed build and tests successfully finished!'
+						}
+		   		      }
+					
 				}
 		    		echo 'Test Completed !'
 			}
