@@ -8,7 +8,7 @@ pipeline {
 	  			 //sh 'cd'
           			//sh 'cd GitHub-Projects/deneme-jenkins/'
 				echo 'Build'
-				sh 'python3 /plus/plus.py'
+				sh 'python3 plus/plus.py'
 				//sh 'git config --global user.email "ahmetssaglam@gmail.com"'
 				//sh 'git config --global user.name "ahmetssaglam"'
         		}
